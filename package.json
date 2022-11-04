@@ -1,0 +1,25 @@
+{
+  "name": "cypress03",
+  "version": "1.0.0",
+  "description": "Cypress Automation Project 01",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "cypress": "cross-env CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nadzainuddin/Cypress-Automation-01.git"
+  },
+  "author": "nadhirahz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nadzainuddin/Cypress-Automation-01/issues"
+  },
+  "homepage": "https://github.com/nadzainuddin/Cypress-Automation-01#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "cypress": "^10.11.0",
+    "cypress-xpath": "^2.0.1"
+  }
+}
