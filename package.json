@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "cypress": "cross-env CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress open"
+    "cypress": "cross-env CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress open",
+    "cy":"cypress open"
   },
   "repository": {
     "type": "git",
