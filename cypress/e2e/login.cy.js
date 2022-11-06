@@ -1,3 +1,4 @@
+const LoginPage = require('../page_objects/common/login_page')
 
 describe('Verify Login Page UI', () => {
   beforeEach(() => {
@@ -12,7 +13,8 @@ describe('Verify Login Page UI', () => {
   });
   
   it('Verify error message on empty username and password', () => {
-    cy.get('button[class*=orangehrm-login-button]').click();
+    //cy.get('button[class*=orangehrm-login-button]').click();
+    LoginPage.clickLoginBtn();
     cy.get('input[name="username"]')
       .parent('div')
       .siblings('span')
@@ -24,7 +26,8 @@ describe('Verify Login Page UI', () => {
   });
 
   it('Verify error message on incorrect username and password', () => {
-    cy.get('button[class*=orangehrm-login-button]').click();
+    //cy.get('button[class*=orangehrm-login-button]').click();
+    LoginPage.clickLoginBtn();
     cy.get('input[name="username"]')
       .parent('div')
       .siblings('span')

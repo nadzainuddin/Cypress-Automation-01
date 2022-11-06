@@ -1,16 +1,19 @@
 import 'cypress-xpath';
+import common from 'mocha/lib/interfaces/common';
 
-const LoginPage = require('../page_objects/login_page')
-const PayGradesPage = require('../page_objects/pay_grades_page')
+const LoginPage = require('../../../page_objects/common/login_page')
+const DashboardPage = require('../../../page_objects/common/dashboard_page')
+const PayGradesPage = require('../../../page_objects/admin/job/pay_grades_page')
 
 describe('Job : Pay Grades functionalities', () => {
     beforeEach(() => {
         cy.visit(Cypress.config().baseUrl);
         LoginPage.login('Admin', 'admin123');
+        DashboardPage.clickAdminModuleMenu();
         PayGradesPage.navigateToPayGradesPage();
     });
 
-    const grade = 'Grade 111';
+    let grade = 'Grade 111';
     
     it('Add Pay Grades successfully', () => {
         cy.get('button').contains('Add').click();
