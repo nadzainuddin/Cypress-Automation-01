@@ -1,8 +1,4 @@
 class PayGradesPage {
-    get adminModuleMenu() {
-        return cy.get('a[href*="viewAdminModule"]');
-    }
-
     get jobMenu() {
         return cy.get('span').contains('Job');
     }
@@ -23,7 +19,7 @@ class PayGradesPage {
     get addCurrencyBtn() {
         return cy.get('h6')
             .contains('Currencies')
-            .siblings('button')
+            .next('button')
             .contains('Add');
     }
 
@@ -32,7 +28,6 @@ class PayGradesPage {
     }
 
     navigateToPayGradesPage() {
-        this.adminModuleMenu.click();
         this.jobMenu.click();
         this.payGradesSubMenu.click();
     }
@@ -43,6 +38,7 @@ class PayGradesPage {
     }
 
     addCurrency(currency) {
+        cy.wait(2000);
         this.addCurrencyBtn.click();
         this.currencyDropdown.click();
         cy.get('div').contains(currency).click();

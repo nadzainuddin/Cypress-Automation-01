@@ -12,6 +12,10 @@ class LoginPage {
         return cy.get('button[class*=orangehrm-login-button]');
     }
 
+    clickLoginBtn() {
+        loginBtn.click();
+    }
+
     login(username, password) {
         this.usernameInput.type(username);
         this.passwordInput.type(password);

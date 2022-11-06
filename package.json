@@ -4,9 +4,9 @@
   "description": "Cypress Automation Project 01",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
-    "cypress": "cross-env CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress open",
-    "cy":"cypress open"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:spec": "cypress run --spec"
   },
   "repository": {
     "type": "git",
