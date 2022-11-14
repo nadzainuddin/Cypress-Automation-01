@@ -1,11 +1,10 @@
 import 'cypress-xpath';
-import common from 'mocha/lib/interfaces/common';
 
-const LoginPage = require('../../../page_objects/common/login_page')
-const DashboardPage = require('../../../page_objects/common/dashboard_page')
-const PayGradesPage = require('../../../page_objects/admin/job/pay_grades_page')
+const LoginPage = require('../../page_objects/common/login_page')
+const DashboardPage = require('../../page_objects/common/dashboard_page')
+const PayGradesPage = require('../../page_objects/admin/job/pay_grades_page')
 
-describe('Job : Pay Grades functionalities', () => {
+describe('Verify Job Pay Grades Page functionalities', () => {
     beforeEach(() => {
         cy.visit(Cypress.config().baseUrl);
         LoginPage.login('Admin', 'admin123');
@@ -14,25 +13,15 @@ describe('Job : Pay Grades functionalities', () => {
     });
 
     let grade = 'Grade 111';
+    const deletePaygradeBtn = "//div[text()='"+grade+"']/../following-sibling::div/div[contains(@class,'actions')]//i[contains(@class,'trash')]";
     
     it('Add Pay Grades successfully', () => {
         cy.get('button').contains('Add').click();
         PayGradesPage.submitPayGrades(grade);
         PayGradesPage.addCurrency('Sri Lanka Rupee');
-        cy.get('label')
-            .contains('Minimum Salary')
-            .parent('div')
-            .siblings('div')
-            .children('input').type('1000');
-        cy.get('label')
-            .contains('Maximum Salary')
-            .parent('div')
-            .siblings('div')
-            .children('input').type('5000');
-        cy.get('h6')
-            .contains('Add Currency')
-            .parent('div')
-            .find('button').contains('Save').click();
+        PayGradesPage.enterMinSalary('1000');
+        PayGradesPage.enterMaxSalary('5000');
+        PayGradesPage.saveCurrency();
         PayGradesPage.navigateToPayGradesPage();
         cy.get('div').contains(grade).should("be.visible");
     });
@@ -44,8 +33,7 @@ describe('Job : Pay Grades functionalities', () => {
     });
 
     it('Delete pay grade', () => {
-        cy.xpath("//div[text()='"+grade+"']/../following-sibling::div/div[contains(@class,'actions')]//i[contains(@class,'trash')]")
-            .click();
+        cy.xpath(deletePaygradeBtn).click({force: true});
         cy.get('button').contains('Yes, Delete').click();
         cy.wait(2000);
         cy.get('div').contains(grade).should("not.exist");

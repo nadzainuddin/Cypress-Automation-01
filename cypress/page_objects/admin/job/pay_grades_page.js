@@ -1,8 +1,7 @@
-class PayGradesPage {
-    get jobMenu() {
-        return cy.get('span').contains('Job');
-    }
+import 'cypress-xpath';
+import AdminPage from '../../common/admin_page';
 
+class PayGradesPage {
     get payGradesSubMenu() {
         return cy.get('a').contains('Pay Grades');
     }
@@ -27,8 +26,31 @@ class PayGradesPage {
         return cy.get('div').contains('Select');
     }
 
+    get minSalaryInput() {
+        return cy.get('label')
+            .contains('Minimum Salary')
+            .parent('div')
+            .siblings('div')
+            .children('input');
+    }
+
+    get maxSalaryInput() {
+        return cy.get('label')
+        .contains('Maximum Salary')
+        .parent('div')
+        .siblings('div')
+        .children('input');
+    }
+
+    get saveCurrencyBtn() {
+        return cy.get('h6')
+            .contains('Add Currency')
+            .parent('div')
+            .find('button').contains('Save');
+    }
+
     navigateToPayGradesPage() {
-        this.jobMenu.click();
+        AdminPage.jobMenu.click();
         this.payGradesSubMenu.click();
     }
 
@@ -44,20 +66,16 @@ class PayGradesPage {
         cy.get('div').contains(currency).click();
     }
 
-    enterMinimumSalary(minSalary) {
-
+    enterMinSalary(minSalary) {
+        this.minSalaryInput.type(minSalary);
     }
 
     enterMaxSalary(maxSalary) {
-
+        this.maxSalaryInput.type(maxSalary);
     }
 
     saveCurrency() {
-
-    }
-
-    deletePayGrades() {
-        
+        this.saveCurrencyBtn.click();
     }
 }
 

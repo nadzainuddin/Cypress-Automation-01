@@ -12,6 +12,10 @@ class LoginPage {
         return cy.get('button[class*=orangehrm-login-button]');
     }
 
+    get forgotLoginLink() {
+        return cy.get('button[class*=orangehrm-login-button]');
+    }
+
     clickLoginBtn() {
         loginBtn.click();
     }
