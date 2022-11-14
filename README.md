@@ -9,6 +9,6 @@ Automation script for https://opensource-demo.orangehrmlive.com/ website
     - [ ] **Organization** : Locations
 - [ ] **PIM**
     - [ ] **Employee**
-- [ ] Recruitment
+- [ ] **Recruitment**
     - [ ] **Candidates**
     - [ ] **Vacancies**
